@@ -1,0 +1,9 @@
+[
+    {
+        "model": "patientzenapi.office",
+        "pk": 1,
+        "fields": {
+            "address": "155 Covey Dr #100, Franklin, TN 37067"
+        }
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "model": "patientzenapi.appointment",
+        "pk": 1,
+        "fields": {
+            "provider": 1,
+            "patient": 1,
+            "date": "04-15-2023",
+            "time": "09:00:00",
+            "office": 1,
+            "visit_summary": "visitation for a yearly check physical."
+        }
+    }
+]

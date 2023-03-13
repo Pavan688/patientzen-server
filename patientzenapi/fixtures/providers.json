@@ -1,0 +1,11 @@
+[
+    {
+        "model": "patientzenapi.provider",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "specialty": "Internal Medicine",
+            "phone_number": "012-345-6789" 
+        }
+    }
+]

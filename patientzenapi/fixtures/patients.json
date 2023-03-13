@@ -1,0 +1,15 @@
+[
+    {
+        "model": "patientzenapi.patient",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "DOB": "12-31-1979",
+            "phone_number": "098-765-4321",
+            "street_name": "134 Promise Way",
+            "city": "Spring City",
+            "state": "TN",
+            "zip_code": "37303"
+        }
+    }
+]

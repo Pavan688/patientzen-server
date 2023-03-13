@@ -1,0 +1,54 @@
+[
+    {
+        "model": "patientzenapi.record",
+        "pk": 1,
+        "fields": {
+            "patient": 1,
+            "provider": 1,
+            "visit_datetime": "2023-02-28T13:00:00.764Z",
+            "visit_summary": "Pt. complains of pain in L foot that started 2 days ago after she tripped. BP:128/78, pulse:89, O2:98, temp:98.9, RR:10, weight:189",
+            "treatment": "Took an x-ray of left foot, gave Tylenol for pain",
+            "diagnosis": "Left ankle is sprained",
+            "medication": "prescription for Ibuprofin for pain and swelling, take as needed for pain."
+        }
+    },
+    {
+        "model": "patientzenapi.record",
+        "pk": 2,
+        "fields": {
+            "patient": 1,
+            "provider": 1,
+            "visit_datetime": "2022-10-08T13:00:00.764Z",
+            "visit_summary": "Pt. complains of sinus pressure, runny nose, congestion, and itichy eyes for the past 5 days BP:120/78, pulse:98, O2:98, temp:98.9, RR:14, weight:180",
+            "treatment": "Checked pt's sinuses, asked about allergies",
+            "diagnosis": "Pt. is having an allergic reaction to a new cat",
+            "medication": "prescription for Allegra for allergies, take one every morning or night after meal"
+        }
+    },
+    {
+        "model": "patientzenapi.record",
+        "pk": 3,
+        "fields": {
+            "patient": 1,
+            "provider": 1,
+            "visit_datetime": "2020-08-01T15:00:00.764Z",
+            "visit_summary": "pt. presents with loss of smell and taste, fever, congestion, and body aches. BP:130/88, pulse:109, O2:97, temp:101.3, RR:15, weight:178",
+            "treatment": "took x-ray of lungs- result neg. for pneumonia, gave tylenol for fever, took a nasal swab sample. Advised patient to return if symptoms worsen.",
+            "diagnosis": "pt symtomatic for covid, can not diagnose until results from test.",
+            "medication": "prescription for Tylenol for fever as needed."
+        }
+    },
+    {
+        "model": "patientzenapi.record",
+        "pk": 4,
+        "fields": {
+            "patient": 1,
+            "provider": 1,
+            "visit_datetime": "2021-03-24T08:00:00.764Z",
+            "visit_summary": "pt. presents with sore throat, complains of pain when swallowing, symptoms started 2 days ago. BP:120/78, pulse:79, temp:98.0, RR:12, weight:185",
+            "treatment": "swabbed pt. for a throat culture, white spots on the back of throat. Advised patient to return if symptoms worsen.",
+            "diagnosis": "Symptoms consistant for a strep throat, can not diagnose until results",
+            "medication": "prescription for amoxicillin for bacterial infection."
+        }
+    }
+]

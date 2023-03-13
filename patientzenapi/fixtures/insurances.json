@@ -1,0 +1,14 @@
+[
+    {
+        "model": "patientzenapi.insurance",
+        "pk": 1,
+        "fields": {
+            "name": "Cigna",
+            "patient": 1,
+            "phone_number": "800-890-9477",
+            "policy_number": "ZA984564",
+            "start_date": "01-01-2023",
+            "end_date": "12-31-2023"
+        }
+    }
+]
