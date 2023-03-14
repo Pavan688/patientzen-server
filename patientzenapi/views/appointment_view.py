@@ -54,10 +54,27 @@ class AppointmentView(ViewSet):
         )
         serializer = AppointmentSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+class PatientSerializer(serializers.ModelSerializer):
+    """JSON serializer for patients"""
+
+    class Meta:
+        model = Patient
+        fields = ('id', 'full_name', 'DOB', )
+
+class OfficeSerializer(serializers.ModelSerializer):
+    """JSON serializer for patients"""
+
+    class Meta:
+        model = Office
+        fields = ('id', 'address', )
 
 
 class AppointmentSerializer(serializers.ModelSerializer):
     """JSON serializer for appointments"""
+    patient = PatientSerializer()
+    office = OfficeSerializer()
     class Meta:
         model = Appointment
         fields = ('id', 'patient', 'provider', 'date', 'time', 'office', 'visit_summary')
