@@ -39,14 +39,14 @@ class RecordView(ViewSet):
                 Response -- JSON serialized record instance with 
                 status code 201"""
         
-        patient = Patient.objects.get(id=request.data['patient'])
-        provider = Provider.objects.get(id=request.data["provider"])
+        patient = Patient.objects.get(pk=request.data['patient'])
+        provider = Provider.objects.get(pk=request.data["provider"])
 
         record = Record.objects.create(
             patient=patient,
             provider=provider,
             visit_datetime=request.data["visit_datetime"],
-            visit_summary=request.data["visit_datetime"],
+            visit_summary=request.data["visit_summary"],
             treatment=request.data["treatment"],
             diagnosis=request.data["diagnosis"],
             medication=request.data["medication"]
@@ -62,7 +62,7 @@ class RecordView(ViewSet):
 
         record = Record.objects.get(pk=pk)
         record.visit_datetime=request.data["visit_datetime"]
-        record.visit_summary=request.data["visit_datetime"]
+        record.visit_summary=request.data["visit_summary"]
         record.treatment=request.data["treatment"]
         record.diagnosis=request.data["diagnosis"]
         record.medication=request.data["medication"]
