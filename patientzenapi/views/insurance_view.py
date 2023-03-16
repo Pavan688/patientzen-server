@@ -40,7 +40,7 @@ class InsuranceView(ViewSet):
                 Response -- JSON serialized insurance instance with 
                 status code 201"""
         
-        patient = Patient.objects.get(id=request.data["patient"])
+        patient = Patient.objects.get(user=request.data["patient"])
 
         insurance = Insurance.objects.create(
             patient=patient,

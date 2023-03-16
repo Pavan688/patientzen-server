@@ -25,7 +25,7 @@ class ProviderView(ViewSet):
             Response -- JSON serialized provider record
         """
 
-        provider = Provider.objects.get(pk=pk)
+        provider = Provider.objects.get(user=pk)
         serialized = PatientSerializer(provider, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
@@ -34,4 +34,4 @@ class PatientSerializer(serializers.ModelSerializer):
     """JSON serializer for patients"""
     class Meta:
         model = Provider
-        fields = ('id', 'full_name', 'specialty', 'phone_number')
+        fields = ('id','user', 'full_name', 'specialty', 'phone_number')

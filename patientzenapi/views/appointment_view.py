@@ -44,7 +44,7 @@ class AppointmentView(ViewSet):
                 Response -- JSON serialized appointment instance with 
                 status code 201"""
         
-        patient = Patient.objects.get(id=request.data["patient"])
+        patient = Patient.objects.get(user=request.data["patient"])
         provider = Provider.objects.get(id=request.data["provider"])
         office = Office.objects.get(id=request.data["office"])
 
@@ -59,6 +59,27 @@ class AppointmentView(ViewSet):
         serializer = AppointmentSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
+    def update(self, request, pk):
+        """Handle PUT requests for a record
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        appointment = Appointment.objects.get(pk=pk)
+        appointment.date=request.data["date"]
+        appointment.visit_summary=request.data["visit_summary"]
+        appointment.time=request.data["time"]
+
+        patient = Patient.objects.get(user=request.data["patient"])
+        provider = Provider.objects.get(pk=request.data["provider"])
+        office = Office.objects.get(pk=request.data["office"])
+        appointment.patient = patient
+        appointment.provider = provider
+        appointment.office = office
+        appointment.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
     def destroy(self, request, pk):
         appointment = Appointment.objects.get(pk=pk)
         appointment.delete()
@@ -72,6 +93,13 @@ class PatientSerializer(serializers.ModelSerializer):
         model = Patient
         fields = ('id', 'full_name', 'DOB', )
 
+class ProviderSerializer(serializers.ModelSerializer):
+    """JSON serializer for patients"""
+
+    class Meta:
+        model = Provider
+        fields = ('id', 'full_name', 'specialty', )
+
 class OfficeSerializer(serializers.ModelSerializer):
     """JSON serializer for patients"""
 
@@ -84,6 +112,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
     """JSON serializer for appointments"""
     patient = PatientSerializer()
     office = OfficeSerializer()
+    provider = ProviderSerializer()
     class Meta:
         model = Appointment
         fields = ('id', 'patient', 'provider', 'date', 'time', 'office', 'visit_summary')
