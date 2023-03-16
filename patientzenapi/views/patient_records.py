@@ -18,6 +18,11 @@ class RecordView(ViewSet):
         if "patient" in request.query_params:
             records = Record.objects.filter(patient_id=request.query_params['patient'])
 
+        elif "user" in request.query_params:
+            patient = Patient.objects.get(user=request.query_params['user'])
+            records = Record.objects.filter(patient_id=patient.id)
+
+
         else: 
             records = Record.objects.all()
         serialized = RecordSerializer(records, many=True)

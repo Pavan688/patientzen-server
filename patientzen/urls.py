@@ -18,13 +18,15 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from patientzenapi.views import register_user, login_user
-from patientzenapi.views import PatientView, ProviderView, RecordView, AppointmentView
+from patientzenapi.views import PatientView, ProviderView, RecordView, AppointmentView, InsuranceView, OfficeView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'patients', PatientView, 'patient')
 router.register(r'providers', ProviderView, 'provider')
 router.register(r'records', RecordView, 'record')
 router.register(r'appointments', AppointmentView, 'appointment')
+router.register(r'insurances', InsuranceView, 'insurance')
+router.register(r'offices', OfficeView, 'office')
 
 urlpatterns = [
     path('', include(router.urls)),
