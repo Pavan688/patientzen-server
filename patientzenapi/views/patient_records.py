@@ -45,7 +45,7 @@ class RecordView(ViewSet):
                 status code 201"""
         
         patient = Patient.objects.get(pk=request.data['patient'])
-        provider = Provider.objects.get(pk=request.data["provider"])
+        provider = Provider.objects.get(user=request.data["provider"])
 
         record = Record.objects.create(
             patient=patient,
@@ -73,7 +73,7 @@ class RecordView(ViewSet):
         record.medication=request.data["medication"]
 
         patient = Patient.objects.get(pk=request.data["patient"])
-        provider = Provider.objects.get(pk=request.data["provider"])
+        provider = Provider.objects.get(user=request.data["provider"])
         record.patient = patient
         record.provider = provider
         record.save()
