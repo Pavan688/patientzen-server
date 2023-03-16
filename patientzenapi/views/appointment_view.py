@@ -19,6 +19,10 @@ class AppointmentView(ViewSet):
             provider = Provider.objects.get(user=request.query_params['user'])
             appointments = Appointment.objects.filter(provider_id=provider.id)
 
+        elif "patientuser" in request.query_params:
+            patient = Patient.objects.get(user=request.query_params['patientuser'])
+            appointments = Appointment.objects.filter(patient_id=patient.id)
+
         else:
             appointments = Appointment.objects.all()
         serialized = AppointmentSerializer(appointments, many=True)
@@ -54,6 +58,11 @@ class AppointmentView(ViewSet):
         )
         serializer = AppointmentSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    def destroy(self, request, pk):
+        appointment = Appointment.objects.get(pk=pk)
+        appointment.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
     
 
 class PatientSerializer(serializers.ModelSerializer):

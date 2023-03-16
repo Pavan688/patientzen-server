@@ -104,7 +104,7 @@ def register_user(request):
                 street_name=request.data['street_name'],
                 city=request.data['city'],
                 state=request.data['state'],
-                zip_code=request.data['state']
+                zip_code=request.data['zip_code']
             )
         elif account_type == 'provider':
             new_user.is_staff = True
